@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import GameScene from './game/core/GameScene';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue'
+import GameProvider from './game/core/GameProvider'
 
-const canvas = ref<HTMLCanvasElement | null>(null);
+const canvas = ref<HTMLCanvasElement | undefined>()
 
 onMounted(() => {
-    GameScene.getInstance().init(canvas)
+    GameProvider.getInstance().init(canvas.value)
 });
 </script>
 
 <template>
-    <canvas v-ref="canvas"></canvas>
+    <canvas ref="canvas"></canvas>
 </template>
 
 <style scoped>
